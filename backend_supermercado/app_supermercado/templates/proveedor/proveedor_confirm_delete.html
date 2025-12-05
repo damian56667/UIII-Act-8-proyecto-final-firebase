@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card shadow mt-5">
+    <div class="card-header bg-danger text-white">
+        <h4 class="mb-0">Eliminar Proveedor</h4>
+    </div>
+
+    <div class="card-body">
+        <p>¿Estás seguro de que deseas eliminar el proveedor:</p>
+        <h5 class="text-danger">{{ proveedor.nombre_proveedor }}</h5>
+    </div>
+
+    <div class="card-footer text-end">
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <a href="{% url 'proveedor_list' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

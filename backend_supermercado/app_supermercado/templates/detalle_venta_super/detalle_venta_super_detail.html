@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card shadow mt-4">
+    <div class="card-header bg-info text-white">
+        <h4 class="mb-0">Detalles del Item N° {{ detalle.id_detalle }}</h4>
+    </div>
+
+    <div class="card-body">
+        <p><strong>Venta Asociada:</strong> {{ detalle.id_venta }}</p>
+        <p><strong>Producto:</strong> {{ detalle.id_producto }}</p>
+        <hr>
+        <p><strong>Cantidad:</strong> {{ detalle.cantidad }}</p>
+        <p><strong>Precio Unitario (Venta):</strong> ${{ detalle.precio_unitario_venta }}</p>
+        <p><strong>Subtotal (sin IVA/Descuento):</strong> ${{ detalle.subtotal }}</p>
+        <p><strong>IVA Aplicado:</strong> {{ detalle.iva_aplicado }}%</p>
+        <p><strong>Descuento por Item:</strong> {{ detalle.descuento_item }}%</p>
+    </div>
+
+    <div class="card-footer text-end">
+        <a href="{% url 'detalle_venta_super_update' detalle.pk %}" class="btn btn-warning">Editar</a>
+        <a href="{% url 'detalle_venta_super_list' %}" class="btn btn-secondary">Volver</a>
+    </div>
+</div>
+{% endblock %}

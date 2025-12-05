@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card shadow mt-4">
+    <div class="card-header bg-primary text-white">
+        <h4 class="mb-0">
+            {% if object %} Editar Cliente {% else %} Registrar Cliente {% endif %}
+        </h4>
+    </div>
+
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="row">
+                
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Nombre</label>
+                    {{ form.nombre }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Apellido</label>
+                    {{ form.apellido }}
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Teléfono</label>
+                    {{ form.telefono }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Email</label>
+                    {{ form.email }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Dirección</label>
+                    {{ form.direccion_cliente }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Puntos de Fidelidad</label>
+                    {{ form.puntos_fidelidad }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Fecha de Nacimiento</label>
+                    <input type="date" 
+                           name="fecha_nacimiento" 
+                           class="form-control"
+                           value="{{ form.fecha_nacimiento.value|default:''|date:'Y-m-d' }}">
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Fecha de Registro</label>
+                    <input type="date" 
+                           name="fecha_registro" 
+                           class="form-control"
+                           value="{{ form.fecha_registro.value|default:''|date:'Y-m-d' }}">
+                </div>
+
+            </div>
+
+            <div class="mt-4 text-end">
+                <button type="submit" class="btn btn-success px-4">Guardar</button>
+                <a href="{% url 'cliente_super_list' %}" class="btn btn-secondary px-4">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

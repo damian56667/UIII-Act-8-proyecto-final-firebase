@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card shadow mt-4">
+    <div class="card-header bg-info text-white">
+        <h4 class="mb-0">Detalles de la Categoría</h4>
+    </div>
+
+    <div class="card-body">
+        <p><strong>Nombre:</strong> {{ categoria.nombre_categoria }}</p>
+        <p><strong>Descripción:</strong> {{ categoria.descripcion_categoria }}</p>
+        <p><strong>Pasillo:</strong> {{ categoria.pasillo }}</p>
+        <p><strong>Perecedero:</strong> {{ categoria.es_perecedero|yesno:"Sí,No" }}</p>
+        <p><strong>Fecha de Creación:</strong> {{ categoria.fecha_creacion|date:"Y-m-d H:i" }}</p>
+    </div>
+
+    <div class="card-footer text-end">
+        <a href="{% url 'categoria_super_update' categoria.pk %}" class="btn btn-warning">Editar</a>
+        <a href="{% url 'categoria_super_list' %}" class="btn btn-secondary">Volver</a>
+    </div>
+</div>
+{% endblock %}

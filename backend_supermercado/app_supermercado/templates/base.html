@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión de Supermercado</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .navbar { background-color: #343a40; }
+        .navbar-brand, .nav-link { color: #ffffff; }
+        .card-header { background-color: #007bff; color: #ffffff; }
+        .btn-primary { background-color: #007bff; border-color: #007bff; }
+        .btn-primary:hover { background-color: #0056b3; border-color: #0056b3; }
+        .list-group-item-action:hover { background-color: #e9ecef; }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}">Sistema de Gestión de Supermercado</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="{% url 'cajero_list' %}">Cajeros</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'cliente_super_list' %}">Clientes</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'categoria_super_list' %}">Categorías</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'proveedor_list' %}">Proveedores</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'producto_super_list' %}">Productos</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'venta_super_list' %}">Ventas</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'detalle_venta_super_list' %}">Detalles Venta</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main class="container py-5">
+    {% block content %}{% endblock %}
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

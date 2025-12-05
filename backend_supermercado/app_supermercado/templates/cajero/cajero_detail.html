@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card shadow mt-4">
+    <div class="card-header bg-info text-white">
+        <h4 class="mb-0">Detalles del Cajero: {{ cajero.nombre }} {{ cajero.apellido }}</h4>
+    </div>
+
+    <div class="card-body">
+        <p><strong>ID Cajero:</strong> {{ cajero.id_cajero }}</p>
+        <p><strong>DNI:</strong> {{ cajero.dni }}</p>
+        <p><strong>Email:</strong> {{ cajero.email }}</p>
+        <p><strong>Teléfono:</strong> {{ cajero.telefono }}</p>
+        <hr>
+        <p><strong>Turno:</strong> {{ cajero.turno }}</p>
+        <p><strong>Salario:</strong> ${{ cajero.salario }}</p>
+        <p><strong>Fecha de Contratación:</strong> {{ cajero.fecha_contratacion|date:"d/m/Y" }}</p>
+    </div>
+
+    <div class="card-footer text-end">
+        <a href="{% url 'cajero_update' cajero.pk %}" class="btn btn-warning">Editar</a>
+        <a href="{% url 'cajero_list' %}" class="btn btn-secondary">Volver</a>
+    </div>
+</div>
+{% endblock %}

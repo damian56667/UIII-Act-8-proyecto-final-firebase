@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mt-4">
+    <h2 class="fw-bold">Lista de Cajeros 🧑‍💼</h2>
+    <a href="{% url 'cajero_create' %}" class="btn btn-primary">+ Nuevo Cajero</a>
+</div>
+
+<div class="card shadow mt-3">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-striped mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>DNI</th>
+                        <th>Teléfono</th>
+                        <th>Email</th>
+                        <th>Turno</th>
+                        <th>Salario</th>
+                        <th>F. Contratación</th>
+                        <th class="text-center">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cajero in cajeros %}
+                    <tr>
+                        <td>{{ cajero.id_cajero }}</td>
+                        <td>{{ cajero.nombre }}</td>
+                        <td>{{ cajero.apellido }}</td>
+                        <td>{{ cajero.dni }}</td>
+                        <td>{{ cajero.telefono }}</td> 
+                        <td>{{ cajero.email }}</td> 
+                        <td>{{ cajero.turno }}</td>
+                        <td>${{ cajero.salario }}</td>
+                        <td>{{ cajero.fecha_contratacion|date:"d/m/Y" }}</td>
+
+                        <td class="text-center">
+                            <a href="{% url 'cajero_detail' cajero.pk %}" class="btn btn-sm btn-info">Ver</a>
+                            <a href="{% url 'cajero_update' cajero.pk %}" class="btn btn-sm btn-warning">Editar</a>
+                            <a href="{% url 'cajero_delete' cajero.pk %}" class="btn btn-sm btn-danger">Borrar</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="10" class="text-center text-muted py-3">No hay cajeros registrados.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

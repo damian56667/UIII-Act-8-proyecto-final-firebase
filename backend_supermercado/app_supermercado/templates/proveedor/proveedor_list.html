@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mt-4">
+    <h2 class="fw-bold">Lista de Proveedores</h2>
+    <a href="{% url 'proveedor_create' %}" class="btn btn-primary">+ Nuevo Proveedor</a>
+</div>
+
+<div class="card shadow mt-3">
+    <div class="card-body p-0">
+        <table class="table table-striped mb-0">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Contacto</th>
+                    <th>Teléfono</th>
+                    <th>Email</th>
+                    <th>Direccion</th>
+                    <th>RUC</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for proveedor in proveedores %}
+                <tr>
+                    <td>{{ proveedor.id_proveedor }}</td>
+                    <td>{{ proveedor.nombre_proveedor }}</td>
+                    <td>{{ proveedor.contacto_persona }}</td>
+                    <td>{{ proveedor.telefono }}</td>
+                    <td>{{ proveedor.email }}</td>
+                    <td>{{ proveedor.direccion_proveedor}}</td>
+                    <td>{{ proveedor.ruc }}</td>
+
+                    <td class="text-center">
+                        <a href="{% url 'proveedor_detail' proveedor.pk %}" class="btn btn-sm btn-info">Ver</a>
+                        <a href="{% url 'proveedor_update' proveedor.pk %}" class="btn btn-sm btn-warning">Editar</a>
+                        <a href="{% url 'proveedor_delete' proveedor.pk %}" class="btn btn-sm btn-danger">Borrar</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7" class="text-center text-muted py-3">No hay proveedores registrados.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card shadow mt-4">
+    <div class="card-header bg-info text-white">
+        <h4 class="mb-0">Detalles del Cliente: {{ cliente.nombre }} {{ cliente.apellido }}</h4>
+    </div>
+
+    <div class="card-body">
+        <p><strong>ID Cliente:</strong> {{ cliente.id_cliente }}</p>
+        <p><strong>Teléfono:</strong> {{ cliente.telefono }}</p>
+        <p><strong>Email:</strong> {{ cliente.email }}</p>
+        <p><strong>Dirección:</strong> {{ cliente.direccion_cliente }}</p>
+        <hr>
+        <p><strong>Puntos de Fidelidad:</strong> {{ cliente.puntos_fidelidad }}</p>
+        <p><strong>Fecha de Nacimiento:</strong> {{ cliente.fecha_nacimiento|date:"d/m/Y" }}</p>
+        <p><strong>Fecha de Registro:</strong> {{ cliente.fecha_registro|date:"d/m/Y" }}</p>
+    </div>
+
+    <div class="card-footer text-end">
+        <a href="{% url 'cliente_super_update' cliente.pk %}" class="btn btn-warning">Editar</a>
+        <a href="{% url 'cliente_super_list' %}" class="btn btn-secondary">Volver</a>
+    </div>
+</div>
+{% endblock %}

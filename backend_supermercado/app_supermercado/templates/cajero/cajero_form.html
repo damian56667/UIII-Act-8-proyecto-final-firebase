@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card shadow mt-4">
+    <div class="card-header bg-primary text-white">
+        <h4 class="mb-0">
+            {% if object %} Editar Cajero {% else %} Registrar Cajero {% endif %}
+        </h4>
+    </div>
+
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="row">
+                
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Nombre</label>
+                    {{ form.nombre }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Apellido</label>
+                    {{ form.apellido }}
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">DNI</label>
+                    {{ form.dni }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Email</label>
+                    {{ form.email }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Teléfono</label>
+                    {{ form.telefono }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Turno</label>
+                    {{ form.turno }}
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Salario</label>
+                    {{ form.salario }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Fecha de Contratación</label>
+                    <input type="date" 
+                           name="fecha_contratacion" 
+                           class="form-control"
+                           value="{{ form.fecha_contratacion.value|default:''|date:'Y-m-d' }}">
+                    <div class="small text-danger">{{ form.fecha_contratacion.errors }}</div>
+                </div>
+
+            </div>
+
+            <div class="mt-4 text-end">
+                <button type="submit" class="btn btn-success px-4">Guardar</button>
+                <a href="{% url 'cajero_list' %}" class="btn btn-secondary px-4">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

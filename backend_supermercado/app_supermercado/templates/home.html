@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    /* Estilos para la imagen de fondo */
+    .hero-section {
+        background-image: url('https://tvazteca.brightspotcdn.com/dims4/default/f1a7cd3/2147483647/strip/true/crop/1920x1080+0+0/resize/928x522!/format/webp/quality/90/?url=http%3A%2F%2Ftv-azteca-brightspot.s3.amazonaws.com%2F71%2Fd7%2F9aabffd840038ad639f8189547f2%2Fpiojo-alvarado-supermercado-chivas.jpg'); /* <-- CAMBIA ESTA URL POR TU IMAGEN */
+        background-size: cover;
+        background-position: center;
+        color: white; /* Color del texto sobre la imagen */
+        padding: 100px 20px; /* Espaciado interno */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra para el texto */
+        min-height: 400px; /* Altura mínima del banner */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .hero-section h1 {
+        font-size: 3.5rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    .hero-section p.lead {
+        font-size: 1.5rem;
+        margin-bottom: 40px;
+    }
+    /* Estilos para la sección de botones */
+    .features-section {
+        padding: 50px 20px;
+        background-color: #f8f9fa; /* Color de fondo suave */
+    }
+    .feature-card {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        padding: 20px;
+        text-align: center;
+        height: 100%; /* Asegura que todas las tarjetas tengan la misma altura */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .feature-card i {
+        font-size: 3rem;
+        margin-bottom: 15px;
+        color: #007bff;
+    }
+    .feature-card h5 {
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+    .feature-card .btn {
+        margin-top: auto; /* Empuja el botón hacia abajo */
+    }
+</style>
+
+<div class="hero-section">
+    <h1>Bienvenido al Sistema de Gestión de Supermercado</h1>
+    <p class="lead">Optimiza la administración de tu negocio con nuestras herramientas.</p>
+</div>
+
+<div class="container features-section">
+    <h2 class="text-center fw-bold mb-5">Navegación Rápida por Módulos</h2>
+    <div class="row g-4">
+        
+        <div class="col-md-4 col-lg-3">
+            <div class="feature-card">
+                <i class="fas fa-boxes"></i> {# Icono para productos #}
+                <h5>Gestión de Productos</h5>
+                <p>Administra inventario, precios y detalles de cada producto.</p>
+                <a class="btn btn-primary" href="{% url 'producto_super_list' %}">Ir a Productos</a>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-lg-3">
+            <div class="feature-card">
+                <i class="fas fa-tags"></i> {# Icono para categorías #}
+                <h5>Gestión de Categorías</h5>
+                <p>Clasifica tus productos para una mejor organización.</p>
+                <a class="btn btn-primary" href="{% url 'categoria_super_list' %}">Ir a Categorías</a>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-lg-3">
+            <div class="feature-card">
+                <i class="fas fa-truck"></i> {# Icono para proveedores #}
+                <h5>Gestión de Proveedores</h5>
+                <p>Controla la información de tus proveedores.</p>
+                <a class="btn btn-primary" href="{% url 'proveedor_list' %}">Ir a Proveedores</a>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-lg-3">
+            <div class="feature-card">
+                <i class="fas fa-users"></i> {# Icono para clientes #}
+                <h5>Gestión de Clientes</h5>
+                <p>Administra la información de tus clientes y puntos de fidelidad.</p>
+                <a class="btn btn-primary" href="{% url 'cliente_super_list' %}">Ir a Clientes</a>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-lg-3">
+            <div class="feature-card">
+                <i class="fas fa-shopping-cart"></i> {# Icono para ventas #}
+                <h5>Gestión de Ventas</h5>
+                <p>Registra y supervisa todas las transacciones de venta.</p>
+                <a class="btn btn-primary" href="{% url 'venta_super_list' %}">Ir a Ventas</a>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-lg-3">
+            <div class="feature-card">
+                <i class="fas fa-receipt"></i> {# Icono para detalles de venta #}
+                <h5>Detalles de Venta</h5>
+                <p>Verifica los artículos de cada venta realizada.</p>
+                <a class="btn btn-primary" href="{% url 'detalle_venta_super_list' %}">Ir a Detalles</a>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-lg-3">
+            <div class="feature-card">
+                <i class="fas fa-cash-register"></i> {# Icono para cajeros #}
+                <h5>Gestión de Cajeros</h5>
+                <p>Administra la información del personal de caja.</p>
+                <a class="btn btn-primary" href="{% url 'cajero_list' %}">Ir a Cajeros</a>
+            </div>
+        </div>
+
+        </div>
+</div>
+{% endblock %}

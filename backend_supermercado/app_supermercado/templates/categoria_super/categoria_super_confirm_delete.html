@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card shadow mt-4 mx-auto" style="max-width: 500px;">
+    <div class="card-header bg-danger text-white">
+        <h4 class="mb-0">Confirmar Eliminación</h4>
+    </div>
+
+    <div class="card-body text-center">
+        <p class="lead">
+            ¿Estás seguro de que deseas eliminar la categoría <strong>{{ categoriasuper.nombre_categoria }}</strong> (Pasillo: {{ categoriasuper.pasillo }})?
+        </p>
+        
+        <p class="text-danger small">Esta acción no se puede deshacer y podría afectar a los productos asociados.</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="mt-4 d-flex justify-content-center gap-3">
+                <button type="submit" class="btn btn-danger px-4">Sí, Eliminar</button>
+                <a href="{% url 'categoria_super_list' %}" class="btn btn-secondary px-4">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

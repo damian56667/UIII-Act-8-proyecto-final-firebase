@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card shadow mt-4">
+    <div class="card-header bg-primary text-white">
+        <h4 class="mb-0">
+            {% if object %} Editar Venta {% else %} Registrar Venta {% endif %}
+        </h4>
+    </div>
+
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="row">
+                
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Cajero</label>
+                    {{ form.id_cajero }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Cliente</label>
+                    {{ form.id_cliente }}
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Total Venta</label>
+                    {{ form.total_venta }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Descuento Aplicado</label>
+                    {{ form.descuento_aplicado }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Método de Pago</label>
+                    {{ form.metodo_pago }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Número de Ticket</label>
+                    {{ form.numero_ticket }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Estado de Venta</label>
+                    {{ form.estado_venta }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                  <label class="form-label fw-bold">Fecha de Venta</label>
+                  <input type="datetime-local" 
+                         name="fecha_venta" 
+                         class="form-control"
+                         value="{{ form.fecha_venta.value|default:''|date:'Y-m-d\TH:i' }}">
+              </div>
+
+            </div>
+
+            <div class="mt-4 text-end">
+                <button type="submit" class="btn btn-success px-4">Guardar</button>
+                <a href="{% url 'venta_super_list' %}" class="btn btn-secondary px-4">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

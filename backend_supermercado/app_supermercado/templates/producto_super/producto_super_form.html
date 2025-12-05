@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container mt-4">
+    <div class="card shadow p-4">
+        <h2 class="fw-bold text-center">
+            {% if object %}
+                Editar Producto
+            {% else %}
+                Crear Producto
+            {% endif %}
+        </h2>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <label>Nombre del Producto</label>
+                    {{ form.nombre_producto }}
+                </div>
+
+                <div class="col-md-6">
+                    <label>Precio Unitario</label>
+                    {{ form.precio_unitario }}
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <label>Descripción</label>
+                    {{ form.descripcion }}
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-4">
+                    <label>Stock</label>
+                    {{ form.stock }}
+                </div>
+
+                <div class="col-md-4">
+                    <label>Categoría</label>
+                    {{ form.id_categoria }}
+                </div>
+
+                <div class="col-md-4">
+                    <label>Proveedor</label>
+                    {{ form.id_proveedor }}
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <label>Fecha de Vencimiento</label>
+                    <input type="date" 
+                        name="fecha_vencimiento"
+                        class="form-control"
+                        value="{{ form.fecha_vencimiento.value|default:''|date:'Y-m-d' }}"> 
+                </div>
+            
+                <div class="col-md-6">
+                    <label>Código de Barras</label>
+                    {{ form.codigo_barras }}
+                </div>
+            </div>
+            
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <label>Peso (gramos)</label>
+                    {{ form.peso_gramos }}
+                </div>
+
+                <div class="col-md-6">
+                    <label>Tipo de Empaque</label>
+                    {{ form.tipo_empaque }}
+                </div>
+            </div>
+
+            <div class="mt-4 text-center">
+                <button type="submit" class="btn btn-primary px-5">Guardar</button>
+                <a href="{% url 'producto_super_list' %}" class="btn btn-secondary px-4">Cancelar</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+{% endblock %}

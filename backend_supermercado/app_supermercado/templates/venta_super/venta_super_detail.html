@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card shadow mt-4">
+    <div class="card-header bg-info text-white">
+        <h4 class="mb-0">Detalles de la Venta N° {{ venta.numero_ticket }}</h4>
+    </div>
+
+    <div class="card-body">
+        <p><strong>ID Venta:</strong> {{ venta.id_venta }}</p>
+        <p><strong>Fecha de Venta:</strong> {{ venta.fecha_venta|date:"d/m/Y H:i" }}</p>
+        
+        {# Muestra el campo __str__ del objeto Cajero #}
+        <p><strong>Cajero:</strong> {{ venta.id_cajero }}</p>
+        
+        {# Muestra el campo __str__ del objeto ClienteSuper #}
+        <p><strong>Cliente:</strong> {{ venta.id_cliente }}</p>
+        
+        <p><strong>Total Venta:</strong> ${{ venta.total_venta }}</p>
+        <p><strong>Método de Pago:</strong> {{ venta.metodo_pago }}</p>
+        <p><strong>Descuento Aplicado:</strong> {{ venta.descuento_aplicado }}%</p>
+        <p><strong>Estado de Venta:</strong> {{ venta.estado_venta }}</p>
+        <p><strong>Número de Ticket:</strong> {{ venta.numero_ticket }}</p>
+    </div>
+
+    <div class="card-footer text-end">
+        <a href="{% url 'venta_super_update' venta.pk %}" class="btn btn-warning">Editar</a>
+        <a href="{% url 'venta_super_list' %}" class="btn btn-secondary">Volver</a>
+    </div>
+</div>
+{% endblock %}

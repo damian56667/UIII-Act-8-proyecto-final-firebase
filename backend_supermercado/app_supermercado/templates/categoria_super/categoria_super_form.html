@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card shadow mt-4">
+    <div class="card-header bg-primary text-white">
+        <h4 class="mb-0">
+            {% if object %} Editar Categoría {% else %} Registrar Categoría {% endif %}
+        </h4>
+    </div>
+
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="row">
+                
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Nombre</label>
+                    {{ form.nombre_categoria }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Pasillo</label>
+                    {{ form.pasillo }}
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                    <label class="form-label fw-bold">Fecha de Creación</label>
+                    <input type="datetime-local" 
+                           name="fecha_creacion" 
+                           class="form-control"
+                           value="{{ form.fecha_creacion.value|default:''|date:'Y-m-d\TH:i' }}">
+                    <div class="small text-muted">{{ form.fecha_creacion.errors }}</div>
+                </div>
+
+                <div class="col-md-6 mb-3 d-flex align-items-center pt-4">
+                    <div class="form-check">
+                        {{ form.es_perecedero }}
+                        <label class="form-check-label fw-bold" for="{{ form.es_perecedero.id_for_label }}">
+                            Es Perecedero
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="col-12 mb-3">
+                    <label class="form-label fw-bold">Descripción</label>
+                    {{ form.descripcion_categoria }}
+                </div>
+            </div>
+
+            <div class="mt-4 text-end">
+                <button type="submit" class="btn btn-success px-4">Guardar</button>
+                <a href="{% url 'categoria_super_list' %}" class="btn btn-secondary px-4">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
